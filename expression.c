@@ -84,6 +84,7 @@ long main ()
 		str = (char*)realloc(str, (i+1)*sizeof(char));
 		str[i++] = c;
 	}
+	
 	str[i-1] = '\0';
 	k=1;
 	for(i=0; str[i]!='\0'; i++)
@@ -95,7 +96,8 @@ long main ()
         else if(token == ')')
         	while((x=pop(&s))!='(')
 	        	insert_in_list (x, k++, &postfix);
-        else {
+        
+		else {
             while(precedence(token)<=precedence(top(s)) && !stackempty(s))
             {
 				x=pop(&s);
@@ -110,7 +112,8 @@ long main ()
 		x=pop(&s);
         insert_in_list (x, k++, &postfix);
     }
-    printf ("The postfix version of the expression is: ");
+	
+	printf ("The postfix version of the expression is: ");
 	printlist (postfix);
 	evaluate (postfix);
 	return 0;
